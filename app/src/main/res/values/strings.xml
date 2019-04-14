@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">智能台灯</string>
+    <string name="hint_safe_eye_dis">(单位：cm)</string>
+    <string name="hint_safe_body_dis">(单位：cm)</string>
+    <string name="toast_save_successful">保存成功!</string>
+    <string name="please_input_safe_body_dis">请先输入身体安全距离!</string>
+    <string name="please_input_safe_eye_dis">请先输入眼睛安全距离!</string>
+    <string name="unknown">\??</string>
+    <string name="hint_please_input_user_name">请输入用户名</string>
+    <string name="hint_please_input_pwd">请输入密码</string>
+    <string name="login">登    录</string>
+    <string name="toast_intensity_control_succeed">亮度设置成功！</string>
+    <string name="eye_too_close">眼睛靠的太近咯...</string>
+    <string name="body_too_close">身体靠的太近咯...</string>
+    <string name="hint_please_input">请输入</string>
+
+</resources>
