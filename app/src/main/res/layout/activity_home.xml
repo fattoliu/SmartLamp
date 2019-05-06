@@ -1,265 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_main"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/bg_main">
 
-    <TextView
-        android:id="@+id/tv_monitor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:drawableLeft="@drawable/shape"
-        android:textColor="@color/white"
-        android:drawablePadding="8dp"
-        android:text="实时监控"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_desk_to_eye"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_chart"
+            android:layout_width="379dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:drawableLeft="@drawable/shape"
+            android:drawablePadding="8dp"
+            android:text="报表"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_desk_to_eye_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="当前桌面距离眼睛："
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_eye"
-        app:layout_constraintEnd_toStartOf="@+id/tv_desk_to_eye"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_desk_to_eye"
-        app:layout_constraintVertical_bias="0.77" />
+        <RadioGroup
+            android:id="@+id/rg_charts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_radio_group"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/chart_line"
+            app:layout_constraintEnd_toEndOf="@+id/tv_chart"
+            app:layout_constraintStart_toStartOf="@+id/tv_chart"
+            app:layout_constraintTop_toBottomOf="@+id/tv_chart">
 
-    <TextView
-        android:id="@+id/tv_desk_to_eye"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/unknown"
-        android:textAllCaps="false"
-        android:textColor="@color/green"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_cm1"
-        app:layout_constraintStart_toEndOf="@+id/tv_desk_to_eye_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_monitor" />
+            <RadioButton
+                android:id="@+id/rb_desk_to_eye"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_radio_button_left"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="桌面与眼睛"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/tv_cm1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="cm"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_eye"
-        app:layout_constraintStart_toEndOf="@+id/tv_desk_to_eye"
-        app:layout_constraintTop_toTopOf="@+id/tv_desk_to_eye"
-        app:layout_constraintVertical_bias="0.6" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/green" />
+
+            <RadioButton
+                android:id="@+id/rb_desk_to_body"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_radio_button_right"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="6dp"
+                android:paddingBottom="8dp"
+                android:text="桌面与身体"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RadioGroup>
+
+        <com.fatto.mpandroidchart.charts.LineChart
+            android:id="@+id/chart_line"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:background="#DFFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/tv_monitor"
+            app:layout_constraintEnd_toEndOf="@+id/tv_chart"
+            app:layout_constraintHeight_percent="0.35"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_chart"
+            app:layout_constraintTop_toBottomOf="@+id/rg_charts" />
 
 
-    <TextView
-        android:id="@+id/tv_desk_to_body_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="当前桌面距离身体："
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_body"
-        app:layout_constraintEnd_toStartOf="@+id/tv_desk_to_body"
-        app:layout_constraintStart_toStartOf="@+id/tv_desk_to_eye_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_desk_to_body"
-        app:layout_constraintVertical_bias="0.77" />
-
-    <TextView
-        android:id="@+id/tv_desk_to_body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/unknown"
-        android:textColor="@color/green"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_cm2"
-        app:layout_constraintStart_toStartOf="@+id/tv_desk_to_eye"
-        app:layout_constraintTop_toBottomOf="@+id/tv_desk_to_eye" />
-
-    <TextView
-        android:id="@+id/tv_cm2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="cm"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_body"
-        app:layout_constraintStart_toStartOf="@+id/tv_cm1"
-        app:layout_constraintTop_toTopOf="@+id/tv_desk_to_body"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <TextView
-        android:id="@+id/tv_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/white"
-        android:drawableLeft="@drawable/shape"
-        android:drawablePadding="8dp"
-        android:text="设置"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_monitor"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_monitor"
-        app:layout_constraintTop_toBottomOf="@+id/tv_desk_to_body" />
-
-    <TextView
-        android:id="@+id/tv_tip_eye"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="眼睛安全距离:(单位:cm)"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_setting"
-        app:layout_constraintTop_toBottomOf="@+id/tv_setting" />
-
-    <EditText
-        android:id="@+id/et_safe_eye_dis"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/bg_edit"
-        android:hint="@string/hint_please_input"
-        android:inputType="numberDecimal"
-        android:padding="10dp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/et_safe_body_dis"
-        app:layout_constraintStart_toStartOf="@+id/tv_setting"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tip_eye" />
-
-    <EditText
-        android:id="@+id/et_safe_body_dis"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/bg_edit"
-        android:hint="@string/hint_please_input"
-        android:inputType="numberDecimal"
-        android:padding="10dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/et_safe_eye_dis"
-        app:layout_constraintEnd_toStartOf="@+id/tv_save"
-        app:layout_constraintStart_toEndOf="@+id/et_safe_eye_dis"
-        app:layout_constraintTop_toTopOf="@+id/et_safe_eye_dis" />
-
-    <TextView
-        android:id="@+id/tv_luminance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="台灯亮度:"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/et_safe_eye_dis"
-        app:layout_constraintTop_toBottomOf="@+id/et_safe_eye_dis" />
-
-    <RadioGroup
-        android:id="@+id/rg_luminance"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_radio_group"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/tv_save"
-        app:layout_constraintStart_toStartOf="@+id/tv_luminance"
-        app:layout_constraintTop_toBottomOf="@+id/tv_luminance">
-
-        <RadioButton
-            android:id="@+id/rb_low"
+        <TextView
+            android:id="@+id/tv_monitor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/selector_radio_button_left"
-            android:button="@null"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="低"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:drawableLeft="@drawable/shape"
+            android:drawablePadding="8dp"
+            android:text="实时监控"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_desk_to_eye"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chart_line" />
 
-        <RadioButton
-            android:id="@+id/rb_middle"
+        <TextView
+            android:id="@+id/tv_desk_to_eye_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前桌面距离眼睛："
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_eye"
+            app:layout_constraintEnd_toStartOf="@+id/tv_desk_to_eye"
+            app:layout_constraintStart_toStartOf="@+id/tv_monitor"
+            app:layout_constraintTop_toTopOf="@+id/tv_desk_to_eye"
+            app:layout_constraintVertical_bias="0.7" />
+
+        <TextView
+            android:id="@+id/tv_desk_to_eye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/unknown"
+            android:textAllCaps="false"
+            android:textColor="@color/green"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_desk_to_body"
+            app:layout_constraintEnd_toStartOf="@+id/tv_cm1"
+            app:layout_constraintStart_toEndOf="@+id/tv_desk_to_eye_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_monitor" />
+
+        <TextView
+            android:id="@+id/tv_cm1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="cm"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_eye_title"
+            app:layout_constraintStart_toEndOf="@+id/tv_desk_to_eye"
+            app:layout_constraintTop_toTopOf="@+id/tv_desk_to_eye_title" />
+
+
+        <TextView
+            android:id="@+id/tv_desk_to_body_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前桌面距离身体："
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_body"
+            app:layout_constraintEnd_toStartOf="@+id/tv_desk_to_body"
+            app:layout_constraintStart_toStartOf="@+id/tv_desk_to_eye_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_desk_to_body"
+            app:layout_constraintVertical_bias="0.7" />
+
+        <TextView
+            android:id="@+id/tv_desk_to_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/unknown"
+            android:textColor="@color/green"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_setting"
+            app:layout_constraintEnd_toStartOf="@+id/tv_cm2"
+            app:layout_constraintStart_toEndOf="@+id/tv_desk_to_body_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desk_to_eye" />
+
+        <TextView
+            android:id="@+id/tv_cm2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="cm"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_desk_to_body_title"
+            app:layout_constraintStart_toEndOf="@+id/tv_desk_to_body"
+            app:layout_constraintTop_toTopOf="@+id/tv_desk_to_body_title" />
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="379dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/shape"
+            android:drawablePadding="8dp"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_tip_eye"
+            app:layout_constraintEnd_toEndOf="@+id/tv_monitor"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_monitor"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desk_to_body" />
+
+        <TextView
+            android:id="@+id/tv_tip_eye"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/selector_radio_button_center"
-            android:button="@null"
-            android:checked="true"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="中"
+            android:layout_marginTop="8dp"
+            android:text="眼睛安全距离:(单位:cm)"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_safe_eye_dis"
+            app:layout_constraintEnd_toEndOf="@+id/et_safe_eye_dis"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/et_safe_eye_dis"
+            app:layout_constraintTop_toBottomOf="@+id/tv_setting" />
 
-        <RadioButton
-            android:id="@+id/rb_high"
+        <EditText
+            android:id="@+id/et_safe_eye_dis"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/selector_radio_button_right"
-            android:button="@null"
-            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/bg_edit"
+            android:hint="@string/hint_please_input"
+            android:inputType="numberDecimal"
             android:padding="10dp"
-            android:text="高"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_luminance"
+            app:layout_constraintEnd_toStartOf="@+id/et_safe_body_dis"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_setting"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tip_eye" />
+
+        <EditText
+            android:id="@+id/et_safe_body_dis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/bg_edit"
+            android:hint="@string/hint_please_input"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/et_safe_eye_dis"
+            app:layout_constraintEnd_toStartOf="@+id/tv_save"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_safe_eye_dis"
+            app:layout_constraintTop_toTopOf="@+id/et_safe_eye_dis" />
+
+        <TextView
+            android:id="@+id/tv_luminance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="台灯亮度:"
             android:textColor="@color/white"
-            android:textSize="16sp" />
-    </RadioGroup>
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/rg_luminance"
+            app:layout_constraintEnd_toEndOf="@+id/tv_save"
+            app:layout_constraintStart_toStartOf="@+id/et_safe_eye_dis"
+            app:layout_constraintTop_toBottomOf="@+id/et_safe_eye_dis" />
 
-    <TextView
-        android:id="@+id/tv_tip_body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="身体安全距离:(单位:cm)"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_tip_eye"
-        app:layout_constraintStart_toStartOf="@+id/et_safe_body_dis"
-        app:layout_constraintTop_toTopOf="@+id/tv_tip_eye" />
+        <RadioGroup
+            android:id="@+id/rg_luminance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_radio_group"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/tv_luminance"
+            app:layout_constraintStart_toStartOf="@+id/tv_luminance"
+            app:layout_constraintTop_toBottomOf="@+id/tv_luminance">
 
-    <TextView
-        android:id="@+id/tv_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/bg_button"
-        android:padding="10dp"
-        android:text="保存"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/et_safe_body_dis"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/et_safe_body_dis"
-        app:layout_constraintTop_toTopOf="@+id/et_safe_body_dis" />
-</android.support.constraint.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/rb_low"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_radio_button_left"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="低"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/green" />
+
+            <RadioButton
+                android:id="@+id/rb_middle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_radio_button_center"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="中"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/green" />
+
+            <RadioButton
+                android:id="@+id/rb_high"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_radio_button_right"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="高"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_tip_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="身体安全距离:(单位:cm)"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_tip_eye"
+            app:layout_constraintEnd_toEndOf="@+id/et_safe_body_dis"
+            app:layout_constraintStart_toStartOf="@+id/et_safe_body_dis"
+            app:layout_constraintTop_toTopOf="@+id/tv_tip_eye" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/bg_button"
+            android:padding="10dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/et_safe_body_dis"
+            app:layout_constraintEnd_toEndOf="@+id/tv_setting"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_safe_body_dis"
+            app:layout_constraintTop_toTopOf="@+id/et_safe_body_dis" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

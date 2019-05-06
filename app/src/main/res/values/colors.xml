@@ -8,4 +8,5 @@
     <color name="green">#4CAF50</color>
     <color name="green_pressed">#409143</color>
     <color name="green_dark">#317A34</color>
+    <color name="yellow">#FFEB3B</color>
 </resources>

@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 
 /**
- * Created by marco on 2017/8/21.
- * 请求响应
+ * TODO  基础相应实体
+ *
+ * @author fattoliu
+ * @version V 1.0
+ * @date on 7/3/2019 7:30 AM
  */
-
 public class BaseResponseEntity<T> implements Serializable {
+    private static final long serialVersionUID = -6726645970755330812L;
     private Object ErrorObj;
     private int Status;
     private int StatusCode;

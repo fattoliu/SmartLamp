@@ -1,10 +1,12 @@
 package com.smart.lamp.net.response;
 
 /**
- * Created by marco on 2017/8/22.
- * 网关对应的传感器列表item
+ * TODO sensor info
+ *
+ * @author fattoliu
+ * @version V 1.0
+ * @date on 6/3/2019 5:17 PM
  */
-
 public class SensorInfo {
     public String ApiTag;
     public int Groups;
@@ -18,13 +20,9 @@ public class SensorInfo {
     public String SensorType;
     public String Value;
     public String RecordTime;
-//传感器字段
     public String Unit;
-    //执行器字段
     public long OperType;
     public String OperTypeAttrs;
-
-    //摄像头字段
     public String HttpIp;
     public long HttpPort;
     public String UserName;

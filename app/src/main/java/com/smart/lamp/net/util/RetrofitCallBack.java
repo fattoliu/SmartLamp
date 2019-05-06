@@ -12,6 +12,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+/**
+ * TODO  retrofit callback
+ *
+ * @author fattoliu
+ * @version V 1.0
+ * @date on 5/3/2019 19:24 PM
+ */
 public abstract class RetrofitCallBack<T> implements Callback<T> {
     private Context context;
     private Handler handler;

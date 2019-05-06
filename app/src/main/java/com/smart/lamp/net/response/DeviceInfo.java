@@ -2,6 +2,13 @@ package com.smart.lamp.net.response;
 
 import java.util.List;
 
+/**
+ * TODO Device info
+ *
+ * @author fattoliu
+ * @version V 1.0
+ * @date on 6/3/2019 5:03 PM
+ */
 public class DeviceInfo {
     public String Name;
     public String Tag;

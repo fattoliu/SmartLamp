@@ -1,53 +1,67 @@
 package com.smart.lamp.util;
 
-import android.content.Context;
-import android.text.TextUtils;
-
 /**
- * Created by marco on 2017/8/23.
- * 数据缓存
+ * TODO  Data cache
+ *
+ * @author fattoliu
+ * @version V 1.0
+ * @date on 9/3/2019 9:30 PM
  */
-
 public class DataCache {
+    /**
+     * 访问令牌
+     */
     private static String accessToken;
+    /**
+     * 桌面与眼睛的安全距离
+     */
     private static float safeEyeDistance;
+    /**
+     * 桌面与身体的安全距离
+     */
     private static float safeBodyDistance;
 
-    public static String getAccessToken(Context context) {
-        if (TextUtils.isEmpty(accessToken)) {
-            accessToken = SPHelper.getInstant().getStringFromSP(context, Constants.ACCESS_TOKEN);
-        }
+    /**
+     * 获取登录令牌
+     * @return 令牌
+     */
+    public static String getAccessToken() {
         return accessToken;
     }
 
-    public static float getSafeEyeDistance(Context context) {
-        if (0f == safeEyeDistance) {
-            safeEyeDistance = SPHelper.getInstant().getFloatFromSP(context,
-                    Constants.SAFE_EYE_DISTANCE);
-        }
+    /** 获取桌面与眼睛的安全距离
+     * @return 桌面与眼睛的安全距离
+     */
+    public static float getSafeEyeDistance() {
         return safeEyeDistance;
     }
 
-    public static float getSafeBodyDistance(Context context) {
-        if (0f == safeBodyDistance) {
-            safeBodyDistance = SPHelper.getInstant().getFloatFromSP(context,
-                    Constants.SAFE_BODY_DISTANCE);
-        }
+    /**
+     * 获取桌面与身体的安全距离
+     * @return 桌面与身体的安全距离
+     */
+    public static float getSafeBodyDistance() {
         return safeBodyDistance;
     }
 
-    public static void updateAccessToken(Context context, String value) {
+    /** 更新令牌
+     * @param value 令牌
+     */
+    public static void updateAccessToken(String value) {
         accessToken = value;
-        SPHelper.getInstant().putData2SP(context, Constants.ACCESS_TOKEN, value);
     }
 
-    public static void updateSafeEyeDistance(Context context, float value) {
+    /** 更新桌面与眼睛的安全距离
+     * @param value 桌面与眼睛的安全距离
+     */
+    public static void updateSafeEyeDistance(float value) {
         safeEyeDistance = value;
-        SPHelper.getInstant().putData2SP(context, Constants.SAFE_EYE_DISTANCE, value);
     }
 
-    public static void updateSafeBodyDistance(Context context, float value) {
+    /** 更新桌面与身体的安全距离
+     * @param value 桌面与身体的安全距离
+     */
+    public static void updateSafeBodyDistance(float value) {
         safeBodyDistance = value;
-        SPHelper.getInstant().putData2SP(context, Constants.SAFE_BODY_DISTANCE, value);
     }
 }
