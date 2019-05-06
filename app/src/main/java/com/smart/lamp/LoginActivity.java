@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity {
                 if (response.getStatus() == 0) {
                     // 登录成功，缓存 token，跳转至主界面
                     String accessToken = response.getResultObj().AccessToken;
-                    DataCache.updateAccessToken(getApplicationContext(), accessToken);
+                    DataCache.updateAccessToken(accessToken);
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("userBaseResponseEntity", response);

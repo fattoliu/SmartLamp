@@ -3,6 +3,7 @@ package com.smart.lamp;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 
 
 /**
@@ -21,6 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 一进入页面时，禁止自动弹出键盘
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         onCreateLifecycle(savedInstanceState);
         setContentView(setLayoutRes());
         init();
